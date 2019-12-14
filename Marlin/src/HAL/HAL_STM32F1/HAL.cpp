@@ -27,8 +27,8 @@
 
 #ifdef __STM32F1__
 
-#include "HAL.h"
 #include "../../inc/MarlinConfig.h"
+#include "HAL.h"
 
 #include <STM32ADC.h>
 
@@ -100,7 +100,7 @@ const uint8_t adc_pins[] = {
   #if HAS_HEATED_BED
     TEMP_BED_PIN,
   #endif
-  #if HAS_HEATED_CHAMBER
+  #if HAS_TEMP_CHAMBER
     TEMP_CHAMBER_PIN,
   #endif
   #if HAS_TEMP_ADC_1
@@ -139,7 +139,7 @@ enum TEMP_PINS : char {
   #if HAS_HEATED_BED
     TEMP_BED,
   #endif
-  #if HAS_HEATED_CHAMBER
+  #if HAS_TEMP_CHAMBER
     TEMP_CHAMBER,
   #endif
   #if HAS_TEMP_ADC_1
@@ -233,7 +233,7 @@ void HAL_idletask() {
       // a PC via USB.
       // Other HALs use IS_SD_PRINTING() and IS_SD_FILE_OPEN() to check for access but
       // this will not reliably detect delete operations. To be safe we will lock
-      // the disk if Marlin has it mounted. Unfortuately there is currently no way
+      // the disk if Marlin has it mounted. Unfortunately there is currently no way
       // to unmount the disk from the LCD menu.
       // if (IS_SD_PRINTING() || IS_SD_FILE_OPEN())
       /* copy from lpc1768 framework, should be fixed later for process SHARED_SD_CARD*/
@@ -322,7 +322,7 @@ void HAL_adc_start_conversion(const uint8_t adc_pin) {
     #if HAS_HEATED_BED
       case TEMP_BED_PIN: pin_index = TEMP_BED; break;
     #endif
-    #if HAS_HEATED_CHAMBER
+    #if HAS_TEMP_CHAMBER
       case TEMP_CHAMBER_PIN: pin_index = TEMP_CHAMBER; break;
     #endif
     #if HAS_TEMP_ADC_1
