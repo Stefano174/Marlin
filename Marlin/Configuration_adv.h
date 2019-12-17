@@ -1688,7 +1688,7 @@
   #define FILAMENT_CHANGE_UNLOAD_FEEDRATE     10  // (mm/s) Unload filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_UNLOAD_ACCEL        25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
   //#define FILAMENT_CHANGE_UNLOAD_LENGTH      650
-  #define FILAMENT_CHANGE_UNLOAD_LENGTH      650   // (mm) The length of filament for a complete unload.
+  #define FILAMENT_CHANGE_UNLOAD_LENGTH      710  // (mm) The length of filament for a complete unload.
                                                   //   For Bowden, the full length of the tube and nozzle.
                                                   //   For direct drive, the full length of the nozzle.
                                                   //   Set to 0 for manual unloading.
@@ -1698,7 +1698,7 @@
   #define FILAMENT_CHANGE_FAST_LOAD_FEEDRATE   6  // (mm/s) Load filament feedrate. This can be pretty fast.
   #define FILAMENT_CHANGE_FAST_LOAD_ACCEL     25  // (mm/s^2) Lower acceleration may allow a faster feedrate.
   //#define FILAMENT_CHANGE_FAST_LOAD_LENGTH   615
-  #define FILAMENT_CHANGE_FAST_LOAD_LENGTH    650  // (mm) Load length of filament, from extruder gear to nozzle.
+  #define FILAMENT_CHANGE_FAST_LOAD_LENGTH    710  // (mm) Load length of filament, from extruder gear to nozzle.
                                                   //   For Bowden, the full length of the tube and nozzle.
                                                   //   For direct drive, the full length of the nozzle.
   #define ADVANCED_PAUSE_CONTINUOUS_PURGE         // Purge continuously up to the purge length until interrupted.
@@ -2751,8 +2751,8 @@
  */
 //#define WIFISUPPORT
 #if ENABLED(WIFISUPPORT)
-  #define WIFI_SSID "Wifi SSID"
-  #define WIFI_PWD  "Wifi Password"
+  #define WIFI_SSID "MarlinGhost"
+  #define WIFI_PWD  "marlino"
   //#define WEBSUPPORT        // Start a webserver with auto-discovery
   //#define OTASUPPORT        // Support over-the-air firmware updates
 #endif
