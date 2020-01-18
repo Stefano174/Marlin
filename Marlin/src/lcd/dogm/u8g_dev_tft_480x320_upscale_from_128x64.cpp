@@ -58,8 +58,8 @@
 /*
   modified by alpine to 3x upscale for 3.5 TFT of the TwoTrees Sapphire Pro
 
-  ToDo:  
-  
+  ToDo:
+
   * DONE - linear upscale algorithm to safe cpu
   * DONE - touchUI in general
   * DONE - check touch control to match hotzones to desired design
@@ -68,7 +68,7 @@
     (see old MKS version)
   * G-Code control ("on/off"/"brightness"/color profiles)
   * nyan cat
-  
+
   longterm:
   * DONE make selectable upscale options (in own classes)
     * still missing non-DMA mode
@@ -179,7 +179,7 @@ x ||^24    ^136   ^248   ^360   ||/___ y = 301 px
 #define COLOR_AQUA        0x07FF  // #00FFFF
 
 #define COLOR_MAROON      0x7800  // #800000
-#define COLOR_GREEN       0x03E0  // #008000
+#define COLOR_GREEN       0x27E0  // #008000
 #define COLOR_NAVY        0x000F  // #000080
 #define COLOR_OLIVE       0x8400  // #808000
 #define COLOR_PURPLE      0x8010  // #800080
@@ -240,6 +240,10 @@ x ||^24    ^136   ^248   ^360   ||/___ y = 301 px
 
 
 static uint32_t lcd_id = 0;
+uint16_t ui_color1 = TFT_BTCANCEL_COLOR;
+uint16_t ui_color2 = TFT_BTARROWS_COLOR;
+uint16_t ui_color3 = TFT_BTARROWS_COLOR ;
+uint16_t ui_color4 = TFT_BTOKMENU_COLOR;
 uint16_t bg_color = TFT_MARLINBG_COLOR;
 uint16_t ui_color = TFT_MARLINUI_COLOR;
 static bool reqDrawButtons = false;
@@ -503,7 +507,7 @@ static const uint8_t ili9341_init_sequence[] = { // 0x9341 - ILI9341
     B01111111,B11111111,B11111111,B11111110,
   };
 
-  //@ ToDo 
+  //@ ToDo
   // *check for button sizes and how to upscale to fit on screen
   // *check if other parts of marlin use drawImage
 
@@ -519,7 +523,7 @@ static const uint8_t ili9341_init_sequence[] = { // 0x9341 - ILI9341
   static void drawButtons() {
     reqDrawButtons = true;
   }
-  
+
   void switchColorPreset(uint8_t colorPreset) {
     switch (colorPreset)
     {
@@ -545,7 +549,7 @@ static const uint8_t ili9341_init_sequence[] = { // 0x9341 - ILI9341
           v = color;
         else
           v = bg_color;
-        
+
         // linear write should be faster
         // optimize later
         //
@@ -565,9 +569,9 @@ static const uint8_t ili9341_init_sequence[] = { // 0x9341 - ILI9341
         buffer[k++] = v;
       }
       #ifdef LCD_USE_DMA_FSMC
-        // if (k <= 80) { // generally is... for our buttons        
+        // if (k <= 80) { // generally is... for our buttons
         //   memcpy(&buffer[k], &buffer[0], k * sizeof(uint16_t));
-          
+
         //   LCD_IO_WriteSequence(buffer, k * sizeof(uint16_t));
         // }
         // else {
@@ -578,7 +582,7 @@ static const uint8_t ili9341_init_sequence[] = { // 0x9341 - ILI9341
 
         // Upscale Y 3x
         // linear write should be faster for big arrays
-        // 
+        //
         for (uint16_t l = 0; l < 96; l++)
         {
           buffer[l+96] = buffer[l];
@@ -587,7 +591,7 @@ static const uint8_t ili9341_init_sequence[] = { // 0x9341 - ILI9341
         {
           buffer[l+192] = buffer[l];
         }
-        
+
         LCD_IO_WriteSequence(p_buffer, 288);
       #else
         u8g_WriteSequence(u8g, dev, k << 1, (uint8_t *)buffer);
@@ -606,24 +610,24 @@ inline void memset2(const void *ptr, uint16_t fill, size_t cnt) {
 
 static void clearScreenSequence(u8g_t *u8g, u8g_dev_t *dev) {
   u8g_WriteEscSeqP(u8g, dev, clear_screen_sequence);
-  #ifdef LCD_USE_DMA_FSMC        
+  #ifdef LCD_USE_DMA_FSMC
     LCD_IO_WriteMultiple(bg_color, (480*320));
   #endif
 }
 
 static void drawButtonSequence(u8g_t *u8g, u8g_dev_t *dev) {
-  #if ENABLED(TOUCH_BUTTONS)        
+  #if ENABLED(TOUCH_BUTTONS)
     u8g_WriteEscSeqP(u8g, dev, buttonD_sequence);
-    drawImage(buttonD, u8g, dev, 32, 20, ui_color);
+    drawImage(buttonD, u8g, dev, 32, 20, ui_color1);
 
     u8g_WriteEscSeqP(u8g, dev, buttonA_sequence);
-    drawImage(buttonA, u8g, dev, 32, 20, ui_color);
+    drawImage(buttonA, u8g, dev, 32, 20, ui_color2);
 
     u8g_WriteEscSeqP(u8g, dev, buttonB_sequence);
-    drawImage(buttonB, u8g, dev, 32, 20, ui_color);
+    drawImage(buttonB, u8g, dev, 32, 20, ui_color3);
 
     u8g_WriteEscSeqP(u8g, dev, buttonC_sequence);
-    drawImage(buttonC, u8g, dev, 32, 20, ui_color);
+    drawImage(buttonC, u8g, dev, 32, 20, ui_color4);
   #endif // TOUCH_BUTTONS
 }
 
@@ -658,7 +662,7 @@ uint8_t u8g_dev_tft_480x320_upscale_from_128x64_fn(u8g_t *u8g, u8g_dev_t *dev, u
 
       // Clear Screen Sequence
       // u8g_WriteEscSeqP(u8g, dev, clear_screen_sequence);
-      // #ifdef LCD_USE_DMA_FSMC        
+      // #ifdef LCD_USE_DMA_FSMC
       //   LCD_IO_WriteMultiple(bg_color, (480*320));
       // #else
       //   memset2(buffer, TFT_MARLINBG_COLOR, 160);
@@ -705,7 +709,7 @@ uint8_t u8g_dev_tft_480x320_upscale_from_128x64_fn(u8g_t *u8g, u8g_dev_t *dev, u
       u8g_WriteEscSeqP(u8g, dev, page_first_sequence);
       break;
 
-    case U8G_DEV_MSG_PAGE_NEXT:      
+    case U8G_DEV_MSG_PAGE_NEXT:
       if (++page > (HEIGHT / PAGE_HEIGHT)) return 1;
 
       for (uint8_t y = 0; y < PAGE_HEIGHT; y++) {
@@ -718,7 +722,7 @@ uint8_t u8g_dev_tft_480x320_upscale_from_128x64_fn(u8g_t *u8g, u8g_dev_t *dev, u
           const uint16_t c = TEST(b, y) ? ui_color : bg_color;
           //@ 2x upscale X
           // resulting buffersize RGB565 * 256 - 128*2
-          //buffer[k++] = c; 
+          //buffer[k++] = c;
           //buffer[k++] = c;
 
           //@ 3x upscale X and Y in same loop
@@ -729,12 +733,12 @@ uint8_t u8g_dev_tft_480x320_upscale_from_128x64_fn(u8g_t *u8g, u8g_dev_t *dev, u
           buffer[k++] = c;
         }
         #ifdef LCD_USE_DMA_FSMC
-          //@ 2x upscale Y 
+          //@ 2x upscale Y
           // resulting buffersize RGB565 * 512 - 256*2
           //memcpy(&buffer[256], &buffer[0], 512);
           // Upscale Y 3x
           // linear write should be faster for big arrays
-          // 
+          //
           for (uint16_t l = 0; l < 384; l++)
           {
             buffer[l+384] = buffer[l];

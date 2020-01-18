@@ -71,7 +71,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(alpine, sappireTFT35)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Yandex_an, FlyingbearGhost4S)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 
@@ -142,7 +142,7 @@
 
 // Name displayed in the LCD "Ready" message and Info menu
 //@
-#define CUSTOM_MACHINE_NAME "FGhost 4s"
+#define CUSTOM_MACHINE_NAME "FBGhost 4s"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
@@ -1625,7 +1625,7 @@
  *
  * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech', 'da':'Danish', 'de':'German', 'el':'Greek', 'el_gr':'Greek (Greece)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 'ru':'Russian', 'sk':'Slovak', 'tr':'Turkish', 'uk':'Ukrainian', 'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)', 'test':'TEST' }
  */
-#define LCD_LANGUAGE ru
+#define LCD_LANGUAGE en
 
 /**
  * LCD Character Set
@@ -2106,20 +2106,6 @@
   // FSMC_UPSCALE 3 3x upscaler for 480x320 displays
   //
   #define FSMC_UPSCALE 3
-
-  //
-  // Change colors
-  // some colors are predefined, see /src/lcd/dogm/u8g_dev_tft_480~.cpp Line 160
-  // or use 16bit color (e.g. 0x0000 = black, 0xFFE0 = yellow)
-  // see https://ee-programming-notepad.blogspot.com/2016/10/16-bit-color-generator-picker.html
-  //
-
-  #define TFT_MARLINUI_COLOR COLOR_WHITE // main foreground color
-  #define TFT_MARLINBG_COLOR COLOR_NAVY // background color
-  #define TFT_BTCANCEL_COLOR 0xA9A6 // cancel button
-  #define TFT_BTARROWS_COLOR COLOR_WHITE // arrows up/down
-  #define TFT_BTOKMENU_COLOR COLOR_WHITE // enter button
-  //#define TFT_DISABLED_COLOR COLOR_DARK // currently not used
 
 #endif
 
