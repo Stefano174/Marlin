@@ -71,7 +71,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(fex42, Ghost4S A4988)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(fex42, Ghost4S TMC2208)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 
@@ -142,7 +142,7 @@
 
 // Name displayed in the LCD "Ready" message and Info menu
 //@
-#define CUSTOM_MACHINE_NAME "FBGhost 4s"
+#define CUSTOM_MACHINE_NAME "FB Ghost 4S"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
