@@ -46,6 +46,15 @@
   #define Y_MIN_PIN        19
 #endif
 
+// EndStops
+#define X_MIN_PIN           3
+#define Y_MIN_PIN          42
+#define Z_MIN_PIN          18
+
+#define X_MAX_PIN          43
+#define Y_MAX_PIN          -1
+#define Z_MAX_PIN          -1
+
 // Labeled pins
 #define TRIGORILLA_HEATER_BED_PIN  8
 #define TRIGORILLA_HEATER_0_PIN   10
