@@ -1539,7 +1539,7 @@
 
   //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
-  //#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
+  #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
     //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
@@ -2141,12 +2141,12 @@
   #define INTERPOLATE      false  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   /**
-   * 
+   *
    * Ender-3 Stock
    *   VRef : (X,Y,Z) = 0.582, E = 0.750
    *   Imax :           0.727      0.937
    *   Irms :           0.514      0.663
-   * 
+   *
    */
   #if AXIS_IS_TMC(X)
     #define X_CURRENT       500    // (mA) RMS current. Multiply by 1.414 for peak current.
