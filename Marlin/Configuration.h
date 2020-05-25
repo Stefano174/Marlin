@@ -486,10 +486,10 @@
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
 
-  // Ender-3 Stock hotend
-  #define DEFAULT_Kp 21.73
-  #define DEFAULT_Ki 1.54
-  #define DEFAULT_Kd 76.55
+  // Ender-3 Pro Stock hotend
+  #define DEFAULT_Kp 21.89
+  #define DEFAULT_Ki 1.63
+  #define DEFAULT_Kd 73.70
 
   // Ultimaker
   //#define DEFAULT_Kp 22.2
@@ -545,9 +545,9 @@
   // #define  DEFAULT_bedKi .023
   // #define  DEFAULT_bedKd 305.4
 
-  #define DEFAULT_bedKp 436.20
-  #define DEFAULT_bedKi 85.88
-  #define DEFAULT_bedKd 553.92
+  #define DEFAULT_bedKp 292.23
+  #define DEFAULT_bedKi 54.41
+  #define DEFAULT_bedKd 1046.39
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
