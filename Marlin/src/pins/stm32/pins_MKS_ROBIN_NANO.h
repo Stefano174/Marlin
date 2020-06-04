@@ -52,6 +52,8 @@
 #define Z_MIN_PIN         PA11
 #define Z_MAX_PIN         PC4
 
+#define SERVO0_PIN        PB2 // BL-Touch
+
 #ifndef FIL_RUNOUT_PIN
   #define FIL_RUNOUT_PIN   PA4   // MT_DET
 #endif
