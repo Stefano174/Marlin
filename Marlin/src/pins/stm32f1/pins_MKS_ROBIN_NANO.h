@@ -54,6 +54,8 @@
 #define Z_MIN_PIN                           PA11
 #define Z_MAX_PIN                           PC4
 
+#define SERVO0_PIN                          PB2   // BL-Touch
+
 #ifndef FIL_RUNOUT_PIN
   #define FIL_RUNOUT_PIN                    PA4   // MT_DET
 #endif
@@ -120,6 +122,7 @@
 
 #define SDIO_SUPPORT
 #define SD_DETECT_PIN                       PD12
+#define ONBOARD_SD_CS_PIN                   PC11
 
 //
 // LCD / Controller
@@ -135,8 +138,12 @@
   #define FSMC_CS_PIN                       PD7   // NE4
   #define FSMC_RS_PIN                       PD11  // A0
 
-  #define LCD_RESET_PIN                     PC6   // FSMC_RST
-  #define NO_LCD_REINIT                           // Suppress LCD re-initialization
+  #define LCD_USE_DMA_FSMC                        // Use DMA transfers to send data to the TFT
+  #define FSMC_DMA_DEV                      DMA2
+  #define FSMC_DMA_CHANNEL                  DMA_CH5
+
+//  #define LCD_RESET_PIN                   PC6   // FSMC_RST
+//  #define NO_LCD_REINIT                         // Suppress LCD re-initialization
 
   #define LCD_BACKLIGHT_PIN                 PD13
 
