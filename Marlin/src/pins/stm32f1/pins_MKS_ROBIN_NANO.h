@@ -80,8 +80,8 @@
   #define Z_SERIAL_TX_PIN                     PA1
   #define Z_SERIAL_RX_PIN                     PA1
 
-  //#define E0_SERIAL_TX_PIN                  -1
-  //#define E0_SERIAL_RX_PIN                  -1
+  #define E0_SERIAL_TX_PIN                    PE5
+  #define E0_SERIAL_RX_PIN                    PE5
 
   // Reduce baud rate for software serial reliability
   #if HAS_TMC_SW_SERIAL
