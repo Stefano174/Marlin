@@ -71,14 +71,16 @@
    * Hardware serial communication ports.
    * If undefined software serial is used according to the pins below
    */
-  #define X_SERIAL_TX_PIN                     PA3
-  #define X_SERIAL_RX_PIN                     PA3
+  // use E0 pins for XYZ-UART (E1 pins are not 5V tolerant)
 
-  #define Y_SERIAL_TX_PIN                     PA6
-  #define Y_SERIAL_RX_PIN                     PA6
+  #define X_SERIAL_TX_PIN                     PB3
+  #define X_SERIAL_RX_PIN                     PB3
 
-  #define Z_SERIAL_TX_PIN                     PA1
-  #define Z_SERIAL_RX_PIN                     PA1
+  #define Y_SERIAL_TX_PIN                     PD6
+  #define Y_SERIAL_RX_PIN                     PD6
+
+  #define Z_SERIAL_TX_PIN                     PD3
+  #define Z_SERIAL_RX_PIN                     PD3
 
   #define E0_SERIAL_TX_PIN                    PE5
   #define E0_SERIAL_RX_PIN                    PE5
@@ -104,9 +106,10 @@
 #define Z_STEP_PIN                          PB5
 #define Z_DIR_PIN                           PB4
 
-#define E0_ENABLE_PIN                       PB3
-#define E0_STEP_PIN                         PD6
-#define E0_DIR_PIN                          PD3
+// extruder moved to E1 plug (to make 5V tolerant E0 pins available for TMC2208 UART)
+#define E0_ENABLE_PIN                       PA3
+#define E0_STEP_PIN                         PA6
+#define E0_DIR_PIN                          PA1
 
 //#define E1_ENABLE_PIN                       PA3
 //#define E1_STEP_PIN                         PA6
