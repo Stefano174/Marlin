@@ -257,7 +257,7 @@
 #endif
 
 #ifndef PS_ON_PIN
-  #define PS_ON_PIN                           12
+  #define PS_ON_PIN                           -1
 #endif
 
 #if ENABLED(CASE_LIGHT_ENABLE) && !defined(CASE_LIGHT_PIN) && !defined(SPINDLE_LASER_ENA_PIN)
@@ -301,6 +301,16 @@
 #endif
 
 #if HAS_TMC_UART
+
+  #if 1 // try: TMC2208 UART on E0, X, Y
+    #define E0_SERIAL_TX_PIN                  66
+    #define E0_SERIAL_RX_PIN                  66
+    #define X_SERIAL_TX_PIN                   12
+    #define X_SERIAL_RX_PIN                   12
+    #define Y_SERIAL_TX_PIN                   69
+    #define Y_SERIAL_RX_PIN                   69
+  #endif
+
   /**
    * TMC2208/TMC2209 stepper drivers
    *
