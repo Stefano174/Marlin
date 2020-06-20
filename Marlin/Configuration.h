@@ -682,14 +682,14 @@
  */
 #define X_DRIVER_TYPE  TMC2208 // comment out for stock drivers
 #define Y_DRIVER_TYPE  TMC2208 // comment out for stock drivers
-#define Z_DRIVER_TYPE  TMC2208_STANDALONE // comment out for stock drivers
-#define X2_DRIVER_TYPE TMC2208_STANDALONE
-#define Y2_DRIVER_TYPE TMC2208_STANDALONE
-#define Z2_DRIVER_TYPE TMC2208_STANDALONE // comment out for stock drivers
+#define Z_DRIVER_TYPE  TMC2208 // comment out for stock drivers
+//#define X2_DRIVER_TYPE TMC2208_STANDALONE
+//#define Y2_DRIVER_TYPE TMC2208_STANDALONE
+#define Z2_DRIVER_TYPE TMC2208 // comment out for stock drivers
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
 #define E0_DRIVER_TYPE TMC2208 // comment out for stock drivers
-#define E1_DRIVER_TYPE TMC2208_STANDALONE // comment out for stock drivers
+#define E1_DRIVER_TYPE TMC2208 // comment out for stock drivers
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988

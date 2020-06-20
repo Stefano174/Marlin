@@ -301,125 +301,27 @@
 #endif
 
 #if HAS_TMC_UART
-
-  #if 1 // try: TMC2208 UART on E0, X, Y
-    #define E0_SERIAL_TX_PIN                  66
-    #define E0_SERIAL_RX_PIN                  66
-    #define X_SERIAL_TX_PIN                   12
-    #define X_SERIAL_RX_PIN                   12
-    #define Y_SERIAL_TX_PIN                   69
-    #define Y_SERIAL_RX_PIN                   69
-  #endif
-
-  /**
-   * TMC2208/TMC2209 stepper drivers
-   *
-   * Hardware serial communication ports.
-   * If undefined software serial is used according to the pins below
-   */
-  //#define X_HARDWARE_SERIAL Serial1
-  //#define X2_HARDWARE_SERIAL Serial1
-  //#define Y_HARDWARE_SERIAL Serial1
-  //#define Y2_HARDWARE_SERIAL Serial1
-  //#define Z_HARDWARE_SERIAL Serial1
-  //#define Z2_HARDWARE_SERIAL Serial1
-  //#define E0_HARDWARE_SERIAL Serial1
-  //#define E1_HARDWARE_SERIAL Serial1
-  //#define E2_HARDWARE_SERIAL Serial1
-  //#define E3_HARDWARE_SERIAL Serial1
-  //#define E4_HARDWARE_SERIAL Serial1
-
   //
   // Software serial
   //
 
-  #ifndef X_SERIAL_TX_PIN
-    #define X_SERIAL_TX_PIN                   40
-  #endif
-  #ifndef X_SERIAL_RX_PIN
-    #define X_SERIAL_RX_PIN                   63
-  #endif
-  #ifndef X2_SERIAL_TX_PIN
-    #define X2_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef X2_SERIAL_RX_PIN
-    #define X2_SERIAL_RX_PIN                  -1
-  #endif
+  #define X_SERIAL_TX_PIN                   12 // PS_ON
+  #define X_SERIAL_RX_PIN                   12
+  #define Y_SERIAL_TX_PIN                   69 // T1 / TEMP_1_PIN
+  #define Y_SERIAL_RX_PIN                   69
+  #define Z_SERIAL_TX_PIN                   11 // normally SERVO0_PIN
+  #define Z_SERIAL_RX_PIN                   11
+  #define Z2_SERIAL_TX_PIN                  66 // T2 / TEMP_2_PIN
+  #define Z2_SERIAL_RX_PIN                  66
 
-  #ifndef Y_SERIAL_TX_PIN
-    #define Y_SERIAL_TX_PIN                   59
-  #endif
-  #ifndef Y_SERIAL_RX_PIN
-    #define Y_SERIAL_RX_PIN                   64
-  #endif
-  #ifndef Y2_SERIAL_TX_PIN
-    #define Y2_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef Y2_SERIAL_RX_PIN
-    #define Y2_SERIAL_RX_PIN                  -1
-  #endif
+  //
+  // Hardware serial
+  //
+  // since Pin 14/15 didn't work for UART, I use hardware UART3 for the last driver
 
-  #ifndef Z_SERIAL_TX_PIN
-    #define Z_SERIAL_TX_PIN                   42
-  #endif
-  #ifndef Z_SERIAL_RX_PIN
-    #define Z_SERIAL_RX_PIN                   65
-  #endif
-  #ifndef Z2_SERIAL_TX_PIN
-    #define Z2_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef Z2_SERIAL_RX_PIN
-    #define Z2_SERIAL_RX_PIN                  -1
-  #endif
+  #define E0_HARDWARE_SERIAL Serial3
 
-  #ifndef E0_SERIAL_TX_PIN
-    #define E0_SERIAL_TX_PIN                  44
-  #endif
-  #ifndef E0_SERIAL_RX_PIN
-    #define E0_SERIAL_RX_PIN                  66
-  #endif
-  #ifndef E1_SERIAL_TX_PIN
-    #define E1_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef E1_SERIAL_RX_PIN
-    #define E1_SERIAL_RX_PIN                  -1
-  #endif
-  #ifndef E2_SERIAL_TX_PIN
-    #define E2_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef E2_SERIAL_RX_PIN
-    #define E2_SERIAL_RX_PIN                  -1
-  #endif
-  #ifndef E3_SERIAL_TX_PIN
-    #define E3_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef E3_SERIAL_RX_PIN
-    #define E3_SERIAL_RX_PIN                  -1
-  #endif
-  #ifndef E4_SERIAL_TX_PIN
-    #define E4_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef E4_SERIAL_RX_PIN
-    #define E4_SERIAL_RX_PIN                  -1
-  #endif
-  #ifndef E5_SERIAL_TX_PIN
-    #define E5_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef E5_SERIAL_RX_PIN
-    #define E5_SERIAL_RX_PIN                  -1
-  #endif
-  #ifndef E6_SERIAL_TX_PIN
-    #define E6_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef E6_SERIAL_RX_PIN
-    #define E6_SERIAL_RX_PIN                  -1
-  #endif
-  #ifndef E7_SERIAL_TX_PIN
-    #define E7_SERIAL_TX_PIN                  -1
-  #endif
-  #ifndef E7_SERIAL_RX_PIN
-    #define E7_SERIAL_RX_PIN                  -1
-  #endif
+//  #define TMC_BAUD_RATE 19200
 #endif
 
 //

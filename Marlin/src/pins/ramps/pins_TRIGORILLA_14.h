@@ -94,6 +94,11 @@
 #define FAN2_PIN                     TG_FAN2_PIN
 #define ORIG_E0_AUTO_FAN_PIN         TG_FAN2_PIN  // Used in Anycubic Kossel example config
 
+// BLTOUCH auf S1 PIN (D6)
+#define SERVO0_PIN                             6
+#define SERVO1_PIN                            -1
+#define Y_MAX_PIN                             -1
+
 #include "pins_RAMPS.h"
 
 //
