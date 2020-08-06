@@ -62,6 +62,31 @@
   #define FIL_RUNOUT_PIN                    PA4   // MT_DET
 #endif
 
+#if HAS_TMC_UART
+  /**
+   * TMC2208/TMC2209 stepper drivers
+   *
+   * Hardware serial communication ports.
+   * If undefined software serial is used according to the pins below
+   */
+  // use E0 pins for XYZ-UART (E1 pins are not 5V tolerant)
+
+  #define X_SERIAL_TX_PIN                     PB3
+  #define X_SERIAL_RX_PIN                     PB3
+
+  #define Y_SERIAL_TX_PIN                     PD6
+  #define Y_SERIAL_RX_PIN                     PD6
+
+  #define Z_SERIAL_TX_PIN                     PD3
+  #define Z_SERIAL_RX_PIN                     PD3
+
+  #define E0_SERIAL_TX_PIN                    PE5
+  #define E0_SERIAL_RX_PIN                    PE5
+
+  // Reduce baud rate for software serial reliability
+  #define TMC_BAUD_RATE 19200
+#endif
+
 //
 // Steppers
 //
@@ -77,13 +102,14 @@
 #define Z_STEP_PIN                          PB5
 #define Z_DIR_PIN                           PB4
 
-#define E0_ENABLE_PIN                       PB3
-#define E0_STEP_PIN                         PD6
-#define E0_DIR_PIN                          PD3
+// extruder moved to E1 plug (to make 5V tolerant E0 pins available for TMC2208 UART)
+#define E0_ENABLE_PIN                       PA3
+#define E0_STEP_PIN                         PA6
+#define E0_DIR_PIN                          PA1
 
-#define E1_ENABLE_PIN                       PA3
-#define E1_STEP_PIN                         PA6
-#define E1_DIR_PIN                          PA1
+//#define E1_ENABLE_PIN                       PA3
+//#define E1_STEP_PIN                         PA6
+//#define E1_DIR_PIN                          PA1
 
 //
 // Temperature Sensors
@@ -132,7 +158,7 @@
 //#define KILL_PIN                          PA2   // Enable MKSPWC support ROBIN NANO v1.2 ONLY
 //#define KILL_PIN_INVERTING true                 // Enable MKSPWC support ROBIN NANO v1.2 ONLY
 
-#define SERVO0_PIN                          PA8   // Enable BLTOUCH support ROBIN NANO v1.2 ONLY
+#define SERVO0_PIN                          PB2   // Enable BLTOUCH support ROBIN NANO v1.1
 
 //#define LED_PIN                           PB2
 
@@ -207,7 +233,13 @@
   #define FSMC_CS_PIN                       PD7   // NE4
   #define FSMC_RS_PIN                       PD11  // A0
 
-  #define LCD_RESET_PIN                     PC6   // FSMC_RST
+  #define LCD_USE_DMA_FSMC                        // Use DMA transfers to send data to the TFT
+  #define FSMC_DMA_DEV                      DMA2
+  #define FSMC_DMA_CHANNEL                  DMA_CH5
+
+//  #define LCD_RESET_PIN                   PC6   // FSMC_RST
+//  #define NO_LCD_REINIT                         // Suppress LCD re-initialization
+
   #define LCD_BACKLIGHT_PIN                 PD13
 
   #if ENABLED(TOUCH_BUTTONS)
@@ -218,7 +250,7 @@
   #endif
 #endif
 
-#if HAS_SPI_LCD
+#if HAS_SPI_LCD && NONE(FSMC_GRAPHICAL_TFT)
 
   #define BEEPER_PIN                        PC5
   #define BTN_ENC                           PE13
