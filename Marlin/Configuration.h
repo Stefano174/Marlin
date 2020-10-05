@@ -127,8 +127,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_13_EFB // BOARD_SOVOL_SV01
-  #define SERVO0_PIN        11 //7
+  #define MOTHERBOARD BOARD_SOVOL_SV01
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
