@@ -275,6 +275,8 @@
   #include "mega/pins_PICAOLD.h"                // ATmega2560                             env:mega2560
 #elif MB(INTAMSYS40)
   #include "mega/pins_INTAMSYS40.h"             // ATmega2560                             env:mega2560
+#elif MB(SOVOL_SV01)	
+  #include "mega/pins_SOVOL_SV01.h"             // ATmega2560                             env:mega2560
 
 //
 // ATmega1281, ATmega2561
