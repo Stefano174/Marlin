@@ -611,4 +611,4 @@
     #endif
   #endif // NEWPANEL
 
-#endif // HAS_SPI_LCD
+#endif // HAS_WIRED_LCD
